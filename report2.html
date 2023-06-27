@@ -50,15 +50,7 @@
       const axisHelper = new THREE.AxisHelper(200,50);
       scene.add(axisHelper);
 
-        //芝生を作成
-        const textureLoader = new THREE.TextureLoader();
-        const grassTexture = textureLoader.load("img/f_bg_pat150.png");
-        const groundMaterial = new THREE.MeshBasicMaterial({ map: grassTexture });
-        const groundGeometry = new THREE.PlaneGeometry(200, 200); // 幅と高さを設定
-        const groundMesh = new THREE.Mesh(groundGeometry, groundMaterial);
-        groundMesh.rotation.x = -Math.PI / 2; // 地面を水平に配置するために回転
-        groundMesh.position.y = 0; // 地面の高さを設定
-        scene.add(groundMesh);
+        
         
 
         
