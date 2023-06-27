@@ -87,17 +87,16 @@
         scene.add(sprite2);
 
          // 雲をスプライトで作成
-        var textureLoader = new THREE.TextureLoader();  
-        var texture = textureLoader.load("img/cloud.png");
-        const material = new THREE.SpriteMaterial({ map: texture,});
+        var texture3 = textureLoader.load("img/cloud.png");
+        const material3 = new THREE.SpriteMaterial({ map: texture3,});
 
         // 雲を作成
         for (let i = 0; i < 5; i++) {
-          const sprite = new THREE.Sprite(material);
+          const sprite3 = new THREE.Sprite(material3);
           // ランダムな座標に配置
-          sprite.position.x = 200 * (Math.random() - 100);
-          sprite.position.y = 100* Math.random();
-          sprite.position.z = 200 * (Math.random() - 100);
+          sprite3.position.x = 200-100 * Math.random();
+          sprite3.position.y = 100+100 * Math.random();
+          sprite3.position.z = 200-100 * Math.random();
           // スケールを調整
           sprite.scale.set(0.5, 0.5, 0.5);
 
