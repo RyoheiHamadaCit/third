@@ -19,7 +19,7 @@
         });
         renderer.setSize(width, height);
         // 背景の色を設定
-        renderer.setClearColor(0xeeeeff);
+        renderer.setClearColor(0x00ffff);
 
         // シーンを作成
         const scene = new THREE.Scene();
@@ -50,38 +50,51 @@
       const axisHelper = new THREE.AxisHelper(200,50);
       scene.add(axisHelper);
 
-        // 鳥１をスプライトで作成
+        //芝生を作成
+        const textureLoader = new THREE.TextureLoader();
+        const grassTexture = textureLoader.load("img/f_bg_pat150.png");
+        const groundMaterial = new THREE.MeshBasicMaterial({ map: grassTexture });
+        const groundGeometry = new THREE.PlaneGeometry(200, 200); // 幅と高さを設定
+        const groundMesh = new THREE.Mesh(groundGeometry, groundMaterial);
+        groundMesh.rotation.x = -Math.PI / 2; // 地面を水平に配置するために回転
+        groundMesh.position.y = 0; // 地面の高さを設定
+        scene.add(groundMesh);
+        
+
+        
+
+        // 黄色い小鳥をスプライトで作成
         var textureLoader = new THREE.TextureLoader();  
         var texture0 = textureLoader.load("img/illustrain01-tori01.png");
         const material0 = new THREE.SpriteMaterial({ map: texture0,});
 
         const sprite0 = new THREE.Sprite(material0);
         sprite0.position.x = 0;
-        sprite0.position.y = 50;
+        sprite0.position.y = 0;
         sprite0.position.z = 0;
-        sprite0.scale.set(100,100,100);
+        sprite0.scale.set(50,50,50);
         scene.add(sprite0);
 
-        // 木1をスプライトで作成 
-        var texture1 = textureLoader.load("img/tree1.png");
+        // 白い鳥をスプライトで作成 
+        var texture1 = textureLoader.load("img/illustrain02-bird12.png");
         const material1 = new THREE.SpriteMaterial({ map: texture1,});
 
         const sprite1 = new THREE.Sprite(material1);
         sprite1.position.x = 100;
-        sprite1.position.y = 50;
+        sprite1.position.y = 300;
         sprite1.position.z = -100;
-        sprite1.scale.set(100,100,100);
+        sprite1.scale.set(50,50,50);
         scene.add(sprite1);
 
-        // 木1をスプライトで作成 
-        var texture2 = textureLoader.load("img/tree2.png");
+        // 青い鳥をスプライトで作成 
+        var texture2 = textureLoader.load("img/illustrain02-bird11.png");
         const material2 = new THREE.SpriteMaterial({ map: texture2,});
 
         const sprite2 = new THREE.Sprite(material2);
         sprite2.position.x = -100;
-        sprite2.position.y = 50;
+        sprite2.position.y = 200;
         sprite2.position.z = -100;
-        sprite2.scale.set(100,100,100);
+        sprite2.scale.set(60,60,60);
         scene.add(sprite2);
 
         tick();
