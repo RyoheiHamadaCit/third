@@ -59,7 +59,7 @@
 
         const sprite0 = new THREE.Sprite(material0);
         sprite0.position.x = 0;
-        sprite0.position.y = 0;
+        sprite0.position.y = 30;
         sprite0.position.z = 0;
         sprite0.scale.set(50,50,50);
         scene.add(sprite0);
@@ -85,6 +85,18 @@
         sprite2.position.z = -100;
         sprite2.scale.set(60,60,60);
         scene.add(sprite2);
+
+         // 雲をスプライトで作成
+        var texture3 = textureLoader.load("img/cloud.png");
+        const material3 = new THREE.SpriteMaterial({ map: texture3,});
+
+        const sprite3 = new THREE.Sprite(material3);
+        sprite3.position.x = -150;
+        sprite3.position.y = 360;
+        sprite3.position.z = -150;
+        sprite3.scale.set(80,80,80);
+        scene.add(sprite3);
+       
 
         
         
