@@ -25,11 +25,22 @@
         camera.position.z = 5;
 
         // 人形の頭を作成
-        const headGeometry = new THREE.SphereGeometry(0.5, 32, 32);
-        const headMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-        const headMesh = new THREE.Mesh(headGeometry, headMaterial);
-        scene.add(headMesh);
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#myCanvas') });
+        renderer.setSize(width, height);
 
+        // テクスチャの読み込みとマテリアルの作成
+        const textureLoader = new THREE.TextureLoader();
+        const headTexture = textureLoader.load('path_to_head_texture_image');
+        const headMaterial = new THREE.MeshBasicMaterial({ map: headTexture });
+
+        // 頭の3Dモデルを作成
+        const headGeometry = new THREE.BoxGeometry(width, height, depth);
+        const headMesh = new THREE.Mesh(headGeometry, headMaterial);
+        
+        scene.add(headMesh);
+        
         // 人形の腕を作成
         const armGeometry = new THREE.BoxGeometry(0.2, 1, 0.2);
         const armMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
@@ -43,6 +54,7 @@
         // アニメーションループ
         function animate() {
           requestAnimationFrame(animate);
+          renderer.render(scene, camera);
 
           // 頭と腕を上下に動かすアニメーション
           const time = Date.now() * 0.001;
