@@ -40,6 +40,32 @@
         // 頭部にマテリアルを適用したメッシュを作成
         const mesh = new THREE.Mesh(geometry, material);
 
+        // 体のジオメトリとマテリアルの作成
+        const bodyGeometry = new THREE.BoxGeometry(100, 150, 50);
+        const bodyMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 }); // 赤色のマテリアル
+        
+        // 腕のジオメトリとマテリアルの作成
+        const armGeometry = new THREE.BoxGeometry(30, 100, 30);
+        const armMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // 緑色のマテリアル
+        
+        // 脚のジオメトリとマテリアルの作成
+        const legGeometry = new THREE.BoxGeometry(30, 100, 30);
+        const legMaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff }); // 青色のマテリアル
+        
+        // 体のメッシュの作成
+        const bodyMesh = new THREE.Mesh(bodyGeometry, bodyMaterial);
+        scene.add(bodyMesh);
+        
+        // 腕のメッシュの作成
+        const armMesh = new THREE.Mesh(armGeometry, armMaterial);
+        armMesh.position.set(-60, 0, 0); // 体からの相対位置を設定
+        bodyMesh.add(armMesh); // 体の子要素として追加
+        
+        // 脚のメッシュの作成
+        const legMesh = new THREE.Mesh(legGeometry, legMaterial);
+        legMesh.position.set(0, -75, 0); // 体からの相対位置を設定
+        bodyMesh.add(legMesh); // 体の子要素として追加
+
         // シーンにメッシュを追加
         scene.add(mesh);
 
