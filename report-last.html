@@ -69,12 +69,7 @@
         // シーンにメッシュを追加
         scene.add(mesh);
 
-        // アニメーションループ
-        function animate() {
-          requestAnimationFrame(animate);
-
-          // メッシュを回転させる
-          mesh.rotation.y += 0.01;
+        
 
           // レンダリング
           renderer.render(scene, camera);
